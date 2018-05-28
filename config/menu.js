@@ -1,17 +1,14 @@
-/*
- * @Author: linxin 
- * @Date: 2017-08-27 11:02:58 
- * @Last Modified time: 2017-08-29 11:02:58 
- */
+
+// 注意,这里的Menu和main.js中是同一个对象 !!!!!!!!!!
 const { Menu, dialog, BrowserWindow, shell} = require('electron');
 const path = require('path');
 const url = require('url');
-const template = [
+const template = [{},
     {
-        label: '查看',
+        label: 'Show',
         submenu: [
             {
-                label: '竖屏',
+                label: 'Basic',
                 type: 'radio', 
                 checked: true,
                 click: () => {
@@ -21,7 +18,7 @@ const template = [
                 }
             },
             {
-                label: '横屏', 
+                label: 'Advanced', 
                 type: 'radio', 
                 checked: false,
                 click: () => {
@@ -31,34 +28,34 @@ const template = [
                 }
             },
             {type: 'separator'},
-            {label: '重载',role:'reload'},
-            {label: '退出',role:'quit'},
+            {label: 'Reload',role:'reload'},
+            {label: 'Exit',role:'quit'},
         ]
     },
     {
-        label: '帮助',
+        label: 'Help',
         submenu: [
             {
-                label: '问题反馈',
+                label: 'Feedback',
                 click: () => {
                     shell.openExternal('https://github.com/lin-xin/calculator/issues');
                 }
             },
             {
-                label: '项目地址',
+                label: 'Repository',
                 click: () => {
                     shell.openExternal('https://github.com/lin-xin/calculator');
                 }
             },
             {type: 'separator'},
             {
-                label: '关于作者',
+                label: 'About Me',
                 click: () => {
                     shell.openExternal('http://blog.gdfengshuo.com/about/');
                 }
             },
             {
-                label: '关于计算器',
+                label: 'About This',
                 click: () => {
                     const win = BrowserWindow.fromId(1);
                     let about = new BrowserWindow({
@@ -69,7 +66,7 @@ const template = [
                         minimizable: false,
                         maximizable: false,
                         resizable: false,
-                        title: '关于计算器'
+                        title: 'About This'
                     })
                     
                     about.loadURL(url.format({
@@ -85,7 +82,22 @@ const template = [
                 }
             }
         ]
-    }
+    },
+    {
+        label: 'View',
+        submenu: [
+          {role: 'reload'},
+          {role: 'forcereload'},
+          {role: 'toggledevtools'},
+          {type: 'separator'},
+          {role: 'resetzoom'},
+          {role: 'zoomin'},
+          {role: 'zoomout'},
+          {type: 'separator'},
+          {role: 'togglefullscreen'}
+        ]
+      }
 ]
 const menu = Menu.buildFromTemplate(template);
 Menu.setApplicationMenu(menu);
+
