@@ -36,28 +36,35 @@ sup{
     background: #c6c6c6;
     font-size: 25px;
 }
+/* 每个按键 */
 .keyboard-item {
     float: left;
     width: 25vw;
     height: 25vw;
     text-align: center;
     line-height: 25vw;
-    background: #CDCED1;
-    border-left: 1px solid #6A6B6C;
-    border-bottom: 1px solid #6A6B6C;
+    background: white;
+    border: white 1px solid;
+    /* border-left: 1px solid #6A6B6C; */
+    /* border-bottom: 1px solid #6A6B6C; */
     color: #0B0B0B;
     font-size: 30px;
     box-sizing: border-box;
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
+    transition: border .4s;
 }
+.keyboard-item:hover{
+    border: #0B0B0B solid 1px;
+}
+
 .keyboard-item.active{
     border: 2px solid #0B0B0B;
 }
-
-.keyboard-item::active {
-    background: #bbb;
+/* 鼠标按下时 */
+.keyboard-item:active {
+    background-color: #bbb;
 }
 
 .keyboard-item.orange {
@@ -129,4 +136,9 @@ sup{
     top: -5px;
     content: '10';
     font-size: 12px;
+}
+
+
+.lime{
+    background: lime;
 }

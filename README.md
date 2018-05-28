@@ -1,5 +1,5 @@
 # calculator
-基于 Electron + javascript 实现的桌面计算器应用。
+基于 Electron + ES6 实现的桌面计算器应用。
 
 相关文章：[Electron 实战桌面计算器应用](https://github.com/lin-xin/blog/issues/22)
 
@@ -20,8 +20,8 @@
 
 ## 环境
 
-- windows 7
-- Electron v1.7.5
+- maxOS v10.13.4+
+- Electron v2.0.0
 
 ## 运行
 ```
@@ -29,7 +29,6 @@ git clone https://github.com/lin-xin/calculator.git
 npm install
 npm start
 ```
-就会运行起来了。
 
 ## 构建
 ```
