@@ -10,20 +10,20 @@
   },
   "build": {
     "appId": "com.linxin.calculator",
-    "productName": "计算器",
+    "productName": "myCalculator",
     "electronVersion": "1.7.5",
     "win": {
       "icon": "./static/icon.ico"
     }
   },
   "author": "linxin",
-  "license": "ISC",
+  "license": "GNU",
   "dependencies": {
-    "mathjs": "^3.16.2"
+    "mathjs": "latest"
   },
   "devDependencies": {
-    "electron": "^1.7.5",
-    "electron-builder": "^19.26.0",
-    "electron-packager": "^8.7.2"
+    "electron": "latest",
+    "electron-builder": "latest",
+    "electron-packager": "latest"
   }
 }
