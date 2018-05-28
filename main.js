@@ -49,3 +49,7 @@ app.on('window-all-closed', () => {
         app.quit();
     }
 })
+
+
+
+// 注意, dependencies必须在本地安装
