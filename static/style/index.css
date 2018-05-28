@@ -1,18 +1,25 @@
+html{
+    background-color: black;
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: Mina,'Century Gothic', 'Arial Narrow', 'Helvetica'
+    font-family: Mina, 'Century Gothic', 'Arial Narrow', 'Helvetica'
 }
-sup{
+
+sup {
     font-size: 16px;
     line-height: 14px;
 }
+
 ::-webkit-scrollbar {
     width: 0;
 }
+
 .result-text {
     display: flex;
     align-items: flex-end;
@@ -21,6 +28,7 @@ sup{
     background: #202020;
     color: #fff;
     font-size: 75px;
+    padding: 15px;
     text-align: right;
 }
 
@@ -28,15 +36,20 @@ sup{
     font-size: 67px;
 }
 
-.keyboard-special{
+/* advanced模式下的高级按键 */
+.keyboard-special {
     display: none;
 }
-.keyboard-special .keyboard-item{
-    font-family: Mina,sans-serif;
-    background: #c6c6c6;
+
+.keyboard-special .keyboard-item {
+    font-family: Mina, sans-serif;
+    background: #eee;
     font-size: 25px;
+    color: black;
 }
+
 /* 每个按键 */
+
 .keyboard-item {
     float: left;
     width: 25vw;
@@ -47,7 +60,7 @@ sup{
     border: white 1px solid;
     /* border-left: 1px solid #6A6B6C; */
     /* border-bottom: 1px solid #6A6B6C; */
-    color: #0B0B0B;
+    color: #111;
     font-size: 30px;
     box-sizing: border-box;
     cursor: pointer;
@@ -55,16 +68,21 @@ sup{
     -webkit-user-select: none;
     transition: border .4s;
 }
-.keyboard-item:hover{
+
+.keyboard-item:hover {
     border: #0B0B0B solid 1px;
 }
 
-.keyboard-item.active{
+.keyboard-item.active {
     border: 2px solid #0B0B0B;
 }
+
 /* 鼠标按下时 */
+
 .keyboard-item:active {
-    background-color: #bbb;
+    /* 反色 */
+    --webkit-filter: invert(100%); /* Chrome, Safari, Opera */
+    filter: invert(100%);
 }
 
 .keyboard-item.orange {
@@ -79,58 +97,69 @@ sup{
 .keyboard-item.large {
     width: 50vw;
 }
-.horizontal .result-text{
+
+.horizontal .result-text {
     height: 80px;
     font-size: 50px;
 }
-.horizontal .keyboard-box{
+
+.horizontal .keyboard-box {
     display: flex;
 }
+
 .horizontal .keyboard-box .keyboard-special,
-.horizontal .keyboard-box .keyboard-normal{
+.horizontal .keyboard-box .keyboard-normal {
     display: block;
     flex: 1;
 }
-.horizontal .keyboard-item{
+
+.horizontal .keyboard-item {
     width: 12.5vw;
     height: 10vw;
-    line-height: 10vw; 
+    line-height: 10vw;
 }
-.horizontal .keyboard-item.large{
+
+.horizontal .keyboard-item.large {
     width: 25vw;
 }
 
-.radic-span{
+.radic-span {
     font-size: 25px;
     line-height: 40px;
 }
-.radic-number{
+
+.radic-number {
     position: relative;
     font-size: 23px;
     padding: 0 3px;
     border-top: 2px solid #202020;
 }
+
 .radic-number-2::before,
 .radic-number-3::before,
-.radic-number-y::before{
+.radic-number-n::before {
     position: absolute;
     left: -11px;
     top: -31px;
     content: '2';
     font-size: 12px;
 }
-.radic-number-3::before{
+
+.radic-number-3::before {
     content: '3';
 }
-.radic-number-y::before{
-    content: 'y';
+
+.radic-number-n::before {
+    content: 'n';
     top: -33px;
 }
-.log-span{
+
+.log-span {
     position: relative;
     padding-right: 10px;
 }
-.log-span:after{
+
+.log-span:after {
     position: absolute;
     right: -3px;
     top: -5px;
@@ -138,7 +167,7 @@ sup{
     font-size: 12px;
 }
 
-
-.lime{
+.lime {
+    color: #fff;
     background: lime;
 }

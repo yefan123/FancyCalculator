@@ -3,7 +3,9 @@
  * @Date: 2017-08-23 11:04:01 
  * @Last Modified time: 2017-08-29 11:04:01 
  */
-const { ipcRenderer } = require('electron');
+const {
+    ipcRenderer
+} = require('electron');
 const math = require('mathjs');
 
 math.config({
@@ -24,6 +26,7 @@ let main = {
     // 点击数字键
     clickNumber(num) {
         const _this = this,
+            // 结果框
             res = document.querySelector('.result-text'),
             isPoint = num === '.';
 
@@ -66,7 +69,7 @@ let main = {
                 _this.isEqual ? _this.flag = true : '';
                 break;
             case '%':
-                res.innerHTML = result = math.format(math.eval(res.innerHTML + '/100'),16);
+                res.innerHTML = result = math.format(math.eval(res.innerHTML + '/100'), 16);
                 _this.flag = true;
                 _this.resize();
                 break;
@@ -133,7 +136,7 @@ let main = {
         console.log(_this.register.ope);
         // 如果不是加减乘除运算
         if (_this.register.ope && _this.register.ope !== '*' && _this.register.ope !== '/') {
-            
+
             _this.clickSpecial(_this.register.ope, _this.events);
         } else {
             if (_this.history.before && _this.history.operator && _this.history.after) {
@@ -186,9 +189,9 @@ let main = {
 
         if (num.length > max_length) {
             if (idx !== -1) {
-                return new Number(num).toPrecision(max_length - idx - 1).replace('+', '').substring(0,max_length);
+                return new Number(num).toPrecision(max_length - idx - 1).replace('+', '').substring(0, max_length);
             } else {
-                return new Number(num).toPrecision(max_length - 4).replace('+', '').substring(0,max_length);
+                return new Number(num).toPrecision(max_length - 4).replace('+', '').substring(0, max_length);
             }
         } else {
             return num;

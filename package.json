@@ -1,6 +1,6 @@
 {
   "name": "calculator",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "基于 Electron + javascript 实现的桌面计算器应用",
   "main": "main.js",
   "scripts": {

@@ -15,7 +15,8 @@ const template = [{},
                     const win = BrowserWindow.fromId(1);
                     win.setSize(390,672);
                     win.webContents.send('change_event','vertical');
-                }
+                },
+                accelerator:'CommandOrControl+B'    // 快捷键
             },
             {
                 label: 'Advanced', 
@@ -25,7 +26,8 @@ const template = [{},
                     const win = BrowserWindow.fromId(1);
                     win.setSize(670,460);
                     win.webContents.send('change_event','horizontal');
-                }
+                },
+                accelerator:'CommandOrControl+A'
             },
             {type: 'separator'},
             {label: 'Reload',role:'reload'},
