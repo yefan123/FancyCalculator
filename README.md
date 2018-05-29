@@ -15,8 +15,8 @@
 - 0.1 + 0.2 = 0.3 (浮点数精度处理)
 
 ## 效果图
-![Image text](https://github.com/lin-xin/calculator/raw/master/screenshot/calc1.jpg)
-![Image text](https://github.com/lin-xin/calculator/raw/master/screenshot/calc2.jpg)
+![Image text]()
+![Image text]()
 
 ## 环境
 
