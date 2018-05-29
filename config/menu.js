@@ -14,7 +14,7 @@ const template = [{},
                 click: () => {
                     const win = BrowserWindow.fromId(1);
                     win.setSize(390,672);
-                    win.webContents.send('change_event','vertical');
+                    win.webContents.send('change_event','vertical');    //同mainProcess
                 },
                 accelerator:'CommandOrControl+B'    // 快捷键
             },

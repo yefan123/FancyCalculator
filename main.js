@@ -18,14 +18,14 @@ global['version'] = app.getVersion();
 
 function createWindow() {
     win = new BrowserWindow({
-        width: 390,
+        width: 205,
         height: 672,
         fullscreen: false,
         resizable: true
     });
     // win.webContents.openDevTools();
     win.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
+        pathname: path.join(__dirname, 'index2.html'),
         protocol: 'file',
         slashes: true
     }))
@@ -39,7 +39,7 @@ function createWindow() {
 
 app.on('ready',()=>{
     // 必须写在'ready'的回调中 :-( 
-    require('./config/menu.js');    //相当于静态引用,阻塞执行(￣▽￣)"
+    require('./config/menu.js');    //相当于静态引用,阻塞执行(￣▽￣)" ----> 目标js文件全部执行..
     createWindow();
 } 
 );
@@ -52,4 +52,4 @@ app.on('window-all-closed', () => {
 
 
 
-// 注意, dependencies必须在本地安装
+// 注意, dependencies必须在本地安装; dev-dependencies不需
