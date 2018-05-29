@@ -19,7 +19,7 @@ global['version'] = app.getVersion();
 
 function createWindow() {
     win = new BrowserWindow({
-        width: 205,
+        width: 600,
         height: 672,
         fullscreen: false,
         resizable: true

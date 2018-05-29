@@ -5,7 +5,6 @@
     <title>关于计算器</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="../static/style/about.css"> -->
     <style>
         html,
         body {
@@ -52,7 +51,6 @@
         </p>
     </div>
 
-    <!-- <script src="../static/script/about.js"></script> -->
     <script>
         const {
             shell,
@@ -77,6 +75,11 @@
             }
         }
         main.init();
+
+        document.onkeydown = (e) => {
+            if (e.keyCode === 27)
+                require('electron').ipcRenderer.send('close_about')
+        }
     </script>
 </body>
 

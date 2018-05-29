@@ -1,3 +1,4 @@
+const {ipcRenderer}=require('electron')
 const screen = document.querySelector('#screen')
 // 屏幕中的输入框最左边的一个标识符
 const cursor = document.createElement('span')
@@ -26,7 +27,7 @@ function power() {
 // 删除键
 function del() {
     // let list = screen.lastElementChild.children;
-    if (script.length>0) {
+    if (script.length > 0) {
         screen.lastElementChild.lastElementChild.remove()
         // list[list.length - 1].remove();
         script.pop();
@@ -46,11 +47,12 @@ function wrap() {
     current.insertBefore(left, current.childNodes[0]);
     current.appendChild(right);
     // script = '(' + script + ')'
-    script.unshift('(')     //返回数组的长度
+    script.unshift('(') //返回数组的长度
     script.push(')')
 }
 // 按下等号
 function result() {
+    if (!script.length) return;
     let current = screen.querySelector('div:last-child');
     let span = document.createElement('span')
     let equal = document.createElement('span')
@@ -75,3 +77,5 @@ function result() {
         fontSize = 18;
     }
 }
+
+ipcRenderer.on('changeTo',(event,arg))

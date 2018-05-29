@@ -13,11 +13,10 @@ body {
 }
 
 #advanced {
-    display: none;
+    /* display: none; */
 }
 
 #basic {
-    background: black;
 }
 
 #basic div {
@@ -26,16 +25,26 @@ body {
     height: 20%;
     color: white;
     /* 行高等于元素height实现文本垂直居中 */
-    line-height: 50px;
+    line-height: 75px;
 }
 
-#basic {
+#advanced div {
+    background-color: black;
+    width: 25%;
+    height: 20%;
+    color: white;
+    line-height: 75px;
+}
+
+#basic,#advanced {
+    background: black;
     text-align: center;
-    font-size: 17px;
-    width: 200px;
-    height: 250px;
+    font-size: 18px;
+    width: 50%;
+    height: 375px;
     display: flex;
     flex-wrap: wrap;
+    float: left;
 }
 
 #screen {
@@ -45,8 +54,8 @@ body {
     justify-content: flex-end;
     height: 169px;
     width: 100%;
-    background: rgb(73, 66, 66);
-    color: #fff;
+    background: #8caeb3;
+    color: black;
     font-size: 18px;
     /* padding: 0 8px; */
 }
@@ -60,7 +69,7 @@ body {
 /* 输入框 */
 
 #screen div:last-child {
-    border-top: 1px solid white;
+    border-top: 1px solid black;
 }
 
 section {
@@ -82,10 +91,11 @@ section {
     /* Chrome, Safari, Opera */
     --webkit-filter: invert(100%);
 }
-
+/* 每个按键 */
 #keyboard>div>div {
     transition: border-radius .1s;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 /* 鼠标按下时 */

@@ -1,6 +1,6 @@
 
 // 注意,这里的Menu和main.js中是同一个对象 !!!!!!!!!!
-const { Menu, dialog, BrowserWindow, shell} = require('electron');
+const { Menu, dialog, BrowserWindow, shell,ipcMain} = require('electron');
 const path = require('path');
 const url = require('url');
 const template = [{},
@@ -70,7 +70,7 @@ const template = [{},
                         resizable: false,
                         title: 'About This'
                     })
-                    
+                    ipcMain.on('close_about',()=>{about.close()})
                     about.loadURL(url.format({
                         pathname: path.join(__dirname,'../src/about.html'),
                         protocol: 'file',
