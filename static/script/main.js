@@ -1,4 +1,9 @@
-const {ipcRenderer}=require('electron')
+const {
+    ipcRenderer
+} = require('electron')
+
+const basic = document.querySelector('#basic')
+const advanced = document.querySelector('#advanced')
 const screen = document.querySelector('#screen')
 // 屏幕中的输入框最左边的一个标识符
 const cursor = document.createElement('span')
@@ -7,7 +12,7 @@ cursor.style.cssFloat = 'left'
 screen.querySelector('div:last-child').appendChild(cursor);
 
 let script = [];
-let fontSize = 18;
+let fontSize = 19;
 
 function append(symbol) {
     let span = document.createElement('span')
@@ -74,8 +79,23 @@ function result() {
         screen.appendChild(ele).appendChild(cursor)
         // ele.innerHTML='&nbsp;'
         script = []
-        fontSize = 18;
+        fontSize = 19;
     }
 }
 
-ipcRenderer.on('changeTo',(event,arg))
+ipcRenderer.on('changeTo', (event, arg) => {
+    if (arg === 'basic') {
+        basic.style.width = '100%'
+        advanced.style.display = 'none'
+    } else if (arg === 'advanced') {
+        basic.style.width = '50%'
+        advanced.style.display = 'flex'
+    }
+})
+
+
+// window.onresize=()=>{
+//     for(const div of document.querySelectorAll('#keyboard>div>div')){
+//         div.style.lineHeight=div.height;
+//     }
+// }
