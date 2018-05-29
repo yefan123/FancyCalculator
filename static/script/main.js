@@ -1,3 +1,5 @@
+
+
 const {
     ipcRenderer
 } = require('electron')
@@ -14,21 +16,30 @@ screen.querySelector('div:last-child').appendChild(cursor);
 let script = [];
 let fontSize = 19;
 
-function append(symbol) {
+function append(symbol, realSymbol) {
     let span = document.createElement('span')
     span.innerHTML = symbol;
     span.style.fontSize = `${fontSize}px`
     screen.querySelector('div:last-child').appendChild(span);
-    script.push(symbol);
+    if (realSymbol)
+        script.push(realSymbol);
+    else script.push(symbol)
 }
 // 数学函数
-function fn() {
+function fn(name,realName) {
     wrap();
+    let span = document.createElement('span')
+    span.innerHTML = name;
+    span.style.fontSize = `${fontSize}px`
+    let current = screen.querySelector('div:last-child')
+    current.insertBefore(span, current.childNodes[0])
+    script.unshift(realName)
 }
-// 次方/开根
-function power() {
-    wrap();
-}
+// // 次方/开根
+// function power() {
+//     wrap();
+//     append(`^`, `**`)
+// }
 // 删除键
 function del() {
     // let list = screen.lastElementChild.children;
