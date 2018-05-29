@@ -2,7 +2,8 @@
  * @Author: JimJin 
  * @Date: 2018年 5月28日 星期一 16时27分54秒 CST
  * @version: 1.0.0
- */
+ * * * * * * * * * * * * * * */
+
 const {
     app,
     BrowserWindow,

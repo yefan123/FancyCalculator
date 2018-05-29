@@ -9,12 +9,12 @@ const template = [{},
         submenu: [
             {
                 label: 'Basic',
-                type: 'radio', 
-                checked: true,
+                type: 'radio',  //单选
+                checked: true,  //选中
                 click: () => {
-                    const win = BrowserWindow.fromId(1);
+                    const win = BrowserWindow.fromId(1);    //browserwindow不唯一
                     win.setSize(390,672);
-                    win.webContents.send('change_event','vertical');    //同mainProcess
+                    win.webContents.send('changeTo','advanced');    //同mainProcess
                 },
                 accelerator:'CommandOrControl+B'    // 快捷键
             },
@@ -25,7 +25,7 @@ const template = [{},
                 click: () => {
                     const win = BrowserWindow.fromId(1);
                     win.setSize(670,460);
-                    win.webContents.send('change_event','horizontal');
+                    win.webContents.send('changeTo','basic');
                 },
                 accelerator:'CommandOrControl+A'
             },
