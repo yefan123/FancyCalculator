@@ -8,6 +8,8 @@ const {
 } = require('electron');
 const path = require('path');
 const url = require('url');
+// 子窗口
+let about = null;
 const template = [{},
     {
         label: 'Show',
@@ -37,13 +39,23 @@ const template = [{},
                 type: 'separator'
             },
             {
+                // 只会刷新渲染进程
                 label: 'Reload',
                 role: 'reload'
             },
             {
-                label: 'Exit',
-                role: 'quit'
+                label: 'Force Quit',
+                role: 'quit',
+                accelerator:'CmdOrCtrl+Q'
             },
+            {
+                label:'Exit',
+                accelerator:'Esc',
+                click:()=>{
+                    // 主进程(守候进程?)结束前会先掐掉渲染
+                    process.exit(0)
+                }
+            }
         ]
     },
     {
@@ -66,36 +78,39 @@ const template = [{},
             {
                 label: 'About Me',
                 click: () => {
-                    shell.openExternal('http://blog.gdfengshuo.com/about/');
+                    shell.openExternal('http://www.openidea.xin');
                 }
             },
             {
                 label: 'About This',
+                accelerator:'Space',
                 click: () => {
-                    const win = BrowserWindow.fromId(1);
-                    let about = new BrowserWindow({
-                        parent: win,
-                        modal: true,
-                        width: 500,
-                        height: 300,
-                        minimizable: false,
-                        maximizable: false,
-                        resizable: false,
-                        title: 'About This'
-                    })
-                    ipcMain.on('close_about', () => {
-                        about.close()
-                    })
-                    about.loadURL(url.format({
-                        pathname: path.join(__dirname, './renderer/about.html'),
-                        protocol: 'file',
-                        slashes: true
-                    }));
-                    // about.webContents.openDevTools();
-                    about.setMenu(null);
-                    about.once('ready-to-show', () => {
-                        about.show();
-                    })
+                    if (about) {
+                        about.close();
+                        about=null;
+                    } else {
+                        const win = BrowserWindow.fromId(1);
+                        about = new BrowserWindow({
+                            parent: win,
+                            modal: true,
+                            width: 500,
+                            height: 300,
+                            minimizable: false,
+                            maximizable: false,
+                            resizable: false,
+                            title: 'About This'
+                        })
+                        about.loadURL(url.format({
+                            pathname: path.join(__dirname, './renderer/about.html'),
+                            protocol: 'file',
+                            slashes: true
+                        }));
+                        // about.webContents.openDevTools();
+                        about.setMenu(null);
+                        about.once('ready-to-show', () => {
+                            about.show();
+                        })
+                    }
                 }
             }
         ]

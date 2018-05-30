@@ -11,16 +11,17 @@
             padding: 0;
             margin: 0;
             height: 100%;
+            text-align: center;
         }
 
         body {
             font-family: '微软雅黑';
+            background: #E5F3F7;
         }
 
         .wrapper {
             width: 100%;
-            height: 100%;
-            background: #E5F3F7;
+            height: auto;
             padding: 50px;
             box-sizing: border-box;
         }
@@ -39,15 +40,17 @@
 
 <body>
     <div class="wrapper">
-        <p>名称：计算器</p>
+        <p>品名：
+            <span>Fancy Calculator</span>
+        </p>
         <p>版本：
             <span class="version"></span>
         </p>
         <p>作者：
-            <span class="author">林鑫(2981207131@qq.com)</span>
+            <span class="author" onclick="shell.openExternal('http://www.openidea.xin')">恒星(jinhengyu666@gmail.com)</span>
         </p>
         <p>源码：
-            <span class="code">lin-xin/calculator</span>
+            <a class="code" target="_blank" href="https://github.com/JinHengyu/FancyCalculator">JinHengyu/FancyCalculator</a>
         </p>
     </div>
 
@@ -60,26 +63,12 @@
         const main = {
             init() {
                 main.getAppVersion();
-                main.eventHandle();
-            },
-            eventHandle() {
-                document.querySelector('.author').onclick = (e) => {
-                    shell.openExternal('http://blog.gdfengshuo.com');
-                };
-                document.querySelector('.code').onclick = (e) => {
-                    shell.openExternal('https://github.com/lin-xin/calculator');
-                }
             },
             getAppVersion() {
                 document.querySelector('.version').innerHTML = remote.getGlobal('version');
             }
         }
         main.init();
-
-        document.onkeydown = (e) => {
-            if (e.keyCode === 27)
-                require('electron').ipcRenderer.send('close_about')
-        }
     </script>
 </body>
 

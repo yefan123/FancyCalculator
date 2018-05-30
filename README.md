@@ -1,7 +1,7 @@
 # calculator
 基于 Electron + ES6 实现的桌面计算器应用。
 
-相关文章：[Electron 实战桌面计算器应用](https://github.com/lin-xin/blog/issues/22)
+<!-- 相关文章：[Electron 实战桌面计算器应用]() -->
 
 ## 介绍
 我这里通过 Electron 实现了仿 iPhone 的计算器，通过菜单可以切换横屏和竖屏，横屏有更多的运算。
@@ -16,7 +16,7 @@
 
 ## 效果图
 ![Image text]()
-![Image text]()
+![Image text](./demo/1.jpg)
 
 ## 环境
 
@@ -25,19 +25,13 @@
 
 ## 运行
 ```
-git clone https://github.com/lin-xin/calculator.git
+git clone https://github.com/JinHengyu/FancyCalculator.git
 npm install
 npm start
 ```
 
-## 构建
+## 打包
 ```
-npm run build:win
+npm run package
 ```
 则会在项目中生成个 /计算器-win32-x64 文件夹，打开里面的 计算器.exe 即可打开计算器。
-
-或者
-```
-npm run dist
-```
-则会生成 dist/ 文件夹，里面有应用的安装包，就可以双击安装了。安装过程中可能会有360卫士等提示危险，不用管继续安装就可以。

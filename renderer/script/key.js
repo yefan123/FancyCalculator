@@ -6,7 +6,9 @@ const keyboard = document.querySelector('#keyboard')
 
 
 // 模拟按键后闪烁
-const twinkle = ({style}) => {
+const twinkle = ({
+    style
+}) => {
     style.filter = 'invert(100%)'
     // js修改元素的内联样式, 优先级最高,所以临时用完后果断删除
     setTimeout(() => {
@@ -40,12 +42,8 @@ document.addEventListener('keydown', ({
         clickKey(key_chars[key_codes.indexOf(keyCode)])
     } else // 非虚拟键盘键
         switch (keyCode) {
-            case 27:
-                ipcRenderer.send('exit')
-                process.exit(0)
-                break
-            default:
-                break
+
+            default: break
         }
 
 })
