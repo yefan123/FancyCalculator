@@ -92,8 +92,8 @@ ipcRenderer.on('changeTo', (event, arg) => {
     if (arg === 'basic') {
         basic.style.width = '100%'
         // advanced.style.display = 'none'
-        document.title = 'Fancy Calc ( Basic Mode )'
         // advanced.style.opacity = '0'
+        document.title = 'Fancy Calc ( Basic Mode )'
         advanced.style.left = '-50%'
     } else if (arg === 'advanced') {
         advanced.style.left = '0'

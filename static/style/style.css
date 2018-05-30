@@ -13,11 +13,11 @@ body {
 }
 
 #advanced {
+    /* 选择第三种解决方案: 无缝切入切出 */
     /* display: none; */
-    display: flex;
     /* opacity: 0; */
-    width: 50%;
     /* transition: opacity .9s; */
+    width: 50%;
     transition: left .9s;
     left: -50%;
     font-size: 18px;
@@ -28,13 +28,13 @@ body {
     z-index: 2;
     right: 0;
     width: 100%;
-    display: flex;
     transition: width .9s;
     font-size: 20px;
 }
 
 #basic,
 #advanced {
+    display: flex;
     position: absolute;
     background: black;
     text-align: center;
