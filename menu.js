@@ -1,43 +1,54 @@
-
 // 注意,这里的Menu和main.js中是同一个对象 !!!!!!!!!!
-const { Menu, dialog, BrowserWindow, shell,ipcMain} = require('electron');
+const {
+    Menu,
+    dialog,
+    BrowserWindow,
+    shell,
+    ipcMain
+} = require('electron');
 const path = require('path');
 const url = require('url');
 const template = [{},
     {
         label: 'Show',
-        submenu: [
-            {
+        submenu: [{
                 label: 'Basic',
-                type: 'radio',  //单选
-                checked: true,  //选中
+                type: 'radio', //单选
+                checked: true, //选中
                 click: () => {
-                    const win = BrowserWindow.fromId(1);    //browserwindow不唯一
-                    win.setSize(420,500);
-                    win.webContents.send('changeTo','basic');    //ipcMain没有send方法???
+                    const win = BrowserWindow.fromId(1); //browserwindow不唯一
+                    win.setSize(420, 500);
+                    win.webContents.send('changeTo', 'basic'); //ipcMain没有send方法???
                 },
-                accelerator:'CommandOrControl+B'    // 快捷键
+                accelerator: 'CommandOrControl+B' // 快捷键
             },
             {
-                label: 'Advanced', 
-                type: 'radio', 
+                label: 'Advanced',
+                type: 'radio',
                 checked: false,
                 click: () => {
                     const win = BrowserWindow.fromId(1);
-                    win.setSize(560,500);
-                    win.webContents.send('changeTo','advanced');
+                    win.setSize(560, 500);
+                    win.webContents.send('changeTo', 'advanced');
                 },
-                accelerator:'CommandOrControl+A'
+                accelerator: 'CommandOrControl+A'
             },
-            {type: 'separator'},
-            {label: 'Reload',role:'reload'},
-            {label: 'Exit',role:'quit'},
+            {
+                type: 'separator'
+            },
+            {
+                label: 'Reload',
+                role: 'reload'
+            },
+            {
+                label: 'Exit',
+                role: 'quit'
+            },
         ]
     },
     {
         label: 'Help',
-        submenu: [
-            {
+        submenu: [{
                 label: 'Feedback',
                 click: () => {
                     shell.openExternal('https://github.com/lin-xin/calculator/issues');
@@ -49,7 +60,9 @@ const template = [{},
                     shell.openExternal('https://github.com/lin-xin/calculator');
                 }
             },
-            {type: 'separator'},
+            {
+                type: 'separator'
+            },
             {
                 label: 'About Me',
                 click: () => {
@@ -70,9 +83,11 @@ const template = [{},
                         resizable: false,
                         title: 'About This'
                     })
-                    ipcMain.on('close_about',()=>{about.close()})
+                    ipcMain.on('close_about', () => {
+                        about.close()
+                    })
                     about.loadURL(url.format({
-                        pathname: path.join(__dirname,'../src/about.html'),
+                        pathname: path.join(__dirname, './renderer/about.html'),
                         protocol: 'file',
                         slashes: true
                     }));
@@ -87,19 +102,35 @@ const template = [{},
     },
     {
         label: 'View',
-        submenu: [
-          {role: 'reload'},
-          {role: 'forcereload'},
-          {role: 'toggledevtools'},
-          {type: 'separator'},
-          {role: 'resetzoom'},
-          {role: 'zoomin'},
-          {role: 'zoomout'},
-          {type: 'separator'},
-          {role: 'togglefullscreen'}
+        submenu: [{
+                role: 'reload'
+            },
+            {
+                role: 'forcereload'
+            },
+            {
+                role: 'toggledevtools'
+            },
+            {
+                type: 'separator'
+            },
+            {
+                role: 'resetzoom'
+            },
+            {
+                role: 'zoomin'
+            },
+            {
+                role: 'zoomout'
+            },
+            {
+                type: 'separator'
+            },
+            {
+                role: 'togglefullscreen'
+            }
         ]
-      }
+    }
 ]
 const menu = Menu.buildFromTemplate(template);
 Menu.setApplicationMenu(menu);
-

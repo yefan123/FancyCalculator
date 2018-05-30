@@ -26,24 +26,23 @@ function createWindow() {
     });
     // win.webContents.openDevTools();
     win.loadURL(url.format({
-        pathname: path.join(__dirname, 'index2.html'),
+        pathname: path.join(__dirname, 'renderer', 'index.html'),
         protocol: 'file',
         slashes: true
     }))
-    
+
     win.on('closed', () => {
         win = null;
     })
-    
+
     // win.toggleDevTools();
 }
 
-app.on('ready',()=>{
+app.on('ready', () => {
     // 必须写在'ready'的回调中 :-( 
-    require('./config/menu.js');    //相当于静态引用,阻塞执行(￣▽￣)" ----> 目标js文件全部执行..
+    require('./menu.js'); //相当于静态引用,阻塞执行(￣▽￣)" ----> 目标js文件全部执行..
     createWindow();
-} 
-);
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
