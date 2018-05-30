@@ -60,8 +60,8 @@ function wrap() {
     script.unshift('(') //返回数组的长度
     script.push(')')
 }
-// 按下等号
-function calculate() {
+// 以某一种进制计算结果并显示
+function calculate(mode = 10) {
     if (!script.length) return;
     let current = screen.querySelector('div:last-child');
     let result = document.createElement('span')
@@ -71,7 +71,12 @@ function calculate() {
     result.style.fontSize = `${fontSize}px`
     result.style.color = 'lime'
     try {
-        result.innerHTML = eval(script.join(''))
+        result.innerHTML = eval(script.join('')).toString(mode)
+        if (mode !== 10) {
+            const sub = document.createElement('sub')
+            sub.innerHTML = mode;
+            result.appendChild(sub)
+        }
     } catch (err) {
         // 表达式输入错误
         result.innerHTML = `ERROR`

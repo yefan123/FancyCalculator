@@ -114,7 +114,9 @@ section {
     border-radius: 50%;
 }
 
+sub,
 sup {
     /* 否则会挤压底数(╬￣皿￣)=○ */
     line-height: 18px;
+    font-size: 13px;
 }

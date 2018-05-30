@@ -10,7 +10,7 @@
   },
   "build": {
     "appId": "com.linxin.calculator",
-    "productName": "myCalculator",
+    "productName": "FancyCalculator",
     "electronVersion": "2.0.0",
     "win": {
       "icon": "./static/icon.ico"
