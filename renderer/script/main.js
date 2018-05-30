@@ -7,12 +7,21 @@ const advanced = document.querySelector('#advanced')
 const screen = document.querySelector('#screen')
 // 屏幕中的输入框最左边的一个`>`标识符
 const cursor = document.createElement('span')
-cursor.innerHTML = '>'
-cursor.style.cssFloat = 'left'
-screen.querySelector('div:last-child').appendChild(cursor);
-
 let script = []; //存放内部待eval表达式
 let fontSize = 19; //全局瞬时的字体大小
+let history = [];
+let garbage = [];
+
+// 模块化编程的习惯
+(function init() {
+    let sentence = document.createElement('div')
+    // history.push(sentence)
+    screen.appendChild(sentence)
+    cursor.innerHTML = '>'
+    cursor.style.cssFloat = 'left'
+    screen.querySelector('div:last-child').appendChild(cursor);
+})()
+
 
 function append(symbol, realSymbol) {
     let span = document.createElement('span')
@@ -84,6 +93,7 @@ function calculate(mode = 10) {
     } finally {
         current.appendChild(equal); //' = '
         current.appendChild(result);
+        history.push(current)
         const ele = document.createElement('div');
         // cursor会从原来挂载的地方断开,然后挂到新的地方
         screen.appendChild(ele).appendChild(cursor)

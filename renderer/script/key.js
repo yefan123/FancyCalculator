@@ -42,8 +42,18 @@ document.addEventListener('keydown', ({
         clickKey(key_chars[key_codes.indexOf(keyCode)])
     } else // 非虚拟键盘键
         switch (keyCode) {
-
-            default: break
+            case 38:
+                if (history.length === 0) break
+                screen.removeChild(history[history.length - 1])
+                garbage.push(history.pop())
+                break
+            case 40:
+                if (garbage.length === 0) break
+                history.push(garbage.pop())
+                screen.insertBefore(history[history.length - 1], screen.lastElementChild)
+                break
+            default:
+                break
         }
 
 })
