@@ -13,17 +13,20 @@ body {
 }
 
 #advanced {
-    display: none;
+    /* display: none; */
+    display: flex;
+    /* opacity: 0; */
     width: 50%;
-    /* transition: width 1s; */
-    right: 0;
+    /* transition: opacity .9s; */
+    transition: left .9s;
+    left: -50%;
     font-size: 18px;
-    z-index: 2;
+    z-index: 1;
 }
 
 #basic {
-    z-index: 1;
-    left: 0;
+    z-index: 2;
+    right: 0;
     width: 100%;
     display: flex;
     transition: width .9s;
@@ -90,14 +93,6 @@ section {
     height: 100%;
 }
 
-.red {
-    color: red;
-}
-
-.lime {
-    color: lime;
-}
-
 #keyboard>div>div:hover {
     /* 反色 */
     filter: invert(100%);
@@ -117,4 +112,9 @@ section {
 
 #keyboard>div>div:active {
     border-radius: 50%;
+}
+
+sup {
+    /* 否则会挤压底数(╬￣皿￣)=○ */
+    line-height: 18px;
 }

@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>myCalculator ( Basic Mode )</title>
+	<title>Fancy Calc ( Basic Mode )</title>
 	<link rel="stylesheet" href="static/style/font.css">
 	<link rel="stylesheet" href="static/style/style.css">
 </head>
@@ -20,34 +20,7 @@
 
 
 
-			<div id="basic">
-
-				<div onClick="append(`(`)">(</div>
-				<div onClick="append(`)`)">)</div>
-				<div onClick="del()">←</div>
-				<div onClick="append(`%`)">%</div>
-
-				<div onClick="append(`7`)">7</div>
-				<div onClick="append(`8`)">8</div>
-				<div onClick="append(`9`)">9</div>
-				<div onClick="append(`/`)">/</div>
-
-				<div onClick="append(`4`)">4</div>
-				<div onClick="append(`5`)">5</div>
-				<div onClick="append(`6`)">6</div>
-				<div onClick="append(`*`)">*</div>
-
-				<div onClick="append(`1`)">1</div>
-				<div onClick="append(`2`)">2</div>
-				<div onClick="append(`3`)">3</div>
-				<div onClick="append(`-`)">-</div>
-
-				<div onClick="append(`.`)">.</div>
-				<div onClick="append(`0`)">0</div>
-				<div onClick="result();">=</div>
-				<div onClick="append(`+`)">+</div>
-
-			</div>
+		
 
 
 
@@ -62,11 +35,8 @@
 
 				<div onClick="fn(`ln`,`Math.log`)">ln</div>
 				<div onClick="fn(`exp`,`Math.exp`)">exp</div>
-				<div class="keyboard-item" onClick="main.clickSpecial('8',this)">
-					<span class="radic-span">&radic;</span>
-					<span class="radic-number radic-number-n">x</span>
-				</div>
 				<div onClick="append(`|`)">|</div>
+				<div onClick="append(`&lt;&lt;`)">&lt;&lt;</div>
 
 
 				<div onClick="fn(`sin`,`Math.sin`)">sin</div>
@@ -90,8 +60,39 @@
 			</div>
 
 
+			<div id="basic">
+
+					<div onClick="append(`(`)">(</div>
+					<div onClick="append(`)`)">)</div>
+					<div onClick="del()">←</div>
+					<div onClick="append(`%`)">%</div>
+	
+					<div onClick="append(`7`)">7</div>
+					<div onClick="append(`8`)">8</div>
+					<div onClick="append(`9`)">9</div>
+					<div onClick="append(`/`)">/</div>
+	
+					<div onClick="append(`4`)">4</div>
+					<div onClick="append(`5`)">5</div>
+					<div onClick="append(`6`)">6</div>
+					<div onClick="append(`*`)">*</div>
+	
+					<div onClick="append(`1`)">1</div>
+					<div onClick="append(`2`)">2</div>
+					<div onClick="append(`3`)">3</div>
+					<div onClick="append(`-`)">-</div>
+	
+					<div onClick="append(`.`)">.</div>
+					<div onClick="append(`0`)">0</div>
+					<div onClick="calculate()">=</div>
+					<div onClick="append(`+`)">+</div>
+	
+				</div>
 
 
+
+
+			<!-- html中尖括号的优先级大于引号? -->
 
 
 		</div>
