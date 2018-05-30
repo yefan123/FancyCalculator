@@ -1,8 +1,12 @@
 /*
  * @Author: JimJin 
  * @Date: 2018年 5月28日 星期一 16时27分54秒 CST
- * @version: 1.0.0
+ * @version: 3.0.0
  * * * * * * * * * * * * * * */
+
+
+// 苹果icns图标素材推荐网站:
+// https://findicons.com/
 
 const {
     app,
@@ -17,7 +21,9 @@ const url = require('url');
 // *
 global['version'] = app.getVersion();
 
-function createWindow() {
+app.on('ready', () => {
+    // 必须写在'ready'的回调中 :-( 
+    require('./menu.js'); //相当于静态引用,阻塞执行(￣▽￣)" ----> 目标js文件全部执行..
     let win = new BrowserWindow({
         width: 420,
         height: 500,
@@ -32,16 +38,9 @@ function createWindow() {
     }))
 
     win.on('closed', () => {
-        win = null;
+        win = null; // 释放
     })
 
-    // win.toggleDevTools();
-}
-
-app.on('ready', () => {
-    // 必须写在'ready'的回调中 :-( 
-    require('./menu.js'); //相当于静态引用,阻塞执行(￣▽￣)" ----> 目标js文件全部执行..
-    createWindow();
 });
 
 app.on('window-all-closed', () => {
