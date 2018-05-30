@@ -7,18 +7,18 @@
 const {
     app,
     BrowserWindow,
-    Menu
+    Menu,
+    ipcMain
 } = require('electron');
 const path = require('path');
 const url = require('url');
 
 
-let win;
 // *
 global['version'] = app.getVersion();
 
 function createWindow() {
-    win = new BrowserWindow({
+    let win = new BrowserWindow({
         width: 420,
         height: 500,
         fullscreen: false,
@@ -45,11 +45,14 @@ app.on('ready', () => {
 });
 
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
+    app.quit();
+    process.exit(0);
 })
 
+
+ipcMain.on('exit', () => {
+    process.exit(0)
+})
 
 
 // 注意, dependencies必须在本地安装; dev-dependencies不需

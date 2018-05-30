@@ -32,7 +32,7 @@ function fn(name, realName) {
     span.style.fontSize = `${fontSize}px`
     let current = screen.querySelector('div:last-child')
     current.insertBefore(span, current.childNodes[0])
-    script.unshift(realName)
+    script.unshift(realName ? realName : name)
 }
 // 删除键
 function del() {
