@@ -1,21 +1,24 @@
-const {
-    ipcRenderer
-} = require('electron')
+
 // JS中分号可以淘汰了么(￣.￣)
-const basic = document.querySelector('#basic')
-const advanced = document.querySelector('#advanced')
-const screen = document.querySelector('#screen')
-// 屏幕中的输入框最左边的一个`>`标识符
-const cursor = document.createElement('span')
-let script = []; //存放内部待eval表达式
-let fontSize = 19; //全局瞬时的字体大小
-let history = [];
-let garbage = [];
 
 // 模块化编程的习惯
 (function init() {
+    global['keyboard'] = document.querySelector('#keyboard')
+
+    global['basic'] = document.querySelector('#basic')
+    global['advanced'] = document.querySelector('#advanced')
+    global['screen'] = document.querySelector('#screen')
+    // 屏幕中的输入框最左边的一个`>`标识符
+    global['cursor'] = document.createElement('span')
+    global['script'] = []; //存放内部待eval表达式
+    global['fontSize'] = 19; //全局瞬时的字体大小
+    // 之前与global.history重名..
+    global['sentences'] = [];
+    global['trash_bin'] = [];
+
+
+
     let sentence = document.createElement('div')
-    // history.push(sentence)
     screen.appendChild(sentence)
     cursor.innerHTML = '>'
     cursor.style.cssFloat = 'left'
@@ -72,7 +75,7 @@ function wrap() {
 // 以某一种进制计算结果并显示
 function calculate(mode = 10) {
     if (!script.length) return;
-    let current = screen.querySelector('div:last-child');
+    let sentence = screen.querySelector('div:last-child');
     let result = document.createElement('span')
     let equal = document.createElement('span')
     equal.innerHTML = ` = `
@@ -91,9 +94,9 @@ function calculate(mode = 10) {
         result.innerHTML = `ERROR`
         result.style.color = 'red'
     } finally {
-        current.appendChild(equal); //' = '
-        current.appendChild(result);
-        history.push(current)
+        sentence.appendChild(equal); //' = '
+        sentence.appendChild(result);
+        sentences.push(sentence)
         const ele = document.createElement('div');
         // cursor会从原来挂载的地方断开,然后挂到新的地方
         screen.appendChild(ele).appendChild(cursor)
@@ -103,7 +106,7 @@ function calculate(mode = 10) {
     }
 }
 
-ipcRenderer.on('changeTo', (event, arg) => {
+require('electron').ipcRenderer.on('changeTo', (event, arg) => {
     if (arg === 'basic') {
         basic.style.width = '100%'
         // advanced.style.display = 'none'
