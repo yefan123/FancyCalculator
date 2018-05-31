@@ -46,14 +46,29 @@ const template = [{},
             {
                 label: 'Force Quit',
                 role: 'quit',
-                accelerator:'CmdOrCtrl+Q'
+                accelerator: 'CmdOrCtrl+Q'
             },
             {
-                label:'Exit',
-                accelerator:'Esc',
-                click:()=>{
+                label: 'Exit',
+                accelerator: 'Esc',
+                click: () => {
                     // 主进程(守候进程?)结束前会先掐掉渲染
                     process.exit(0)
+                }
+            },
+            {
+                type: 'separator'
+            },
+            {
+                // 开发者视图三步走(～￣▽￣)～
+                // 进入高级模式--全屏--打开开发者工具
+                label: 'Dev View',
+                accelerator: 'CmdOrCtrl+D',
+                click: () => {
+                    const win = BrowserWindow.fromId(1);
+                    win.webContents.send('changeTo', 'advanced');
+                    win.toggleDevTools()
+                    win.setFullScreen(true)
                 }
             }
         ]
@@ -83,11 +98,11 @@ const template = [{},
             },
             {
                 label: 'About This',
-                accelerator:'Space',
+                accelerator: 'Space',
                 click: () => {
                     if (about) {
                         about.close();
-                        about=null;
+                        about = null;
                     } else {
                         const win = BrowserWindow.fromId(1);
                         about = new BrowserWindow({

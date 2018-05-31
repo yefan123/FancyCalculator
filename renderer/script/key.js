@@ -1,12 +1,10 @@
-// const {
-//     ipcRenderer
-// } = require('electron')
-
+// 规范
 const {
     keyboard,
     sentences,
     screen,
-    trash_bin
+    trash_bin,
+    output
 } = global
 
 // 模拟按键后闪烁
@@ -48,13 +46,14 @@ document.addEventListener('keydown', ({
         switch (keyCode) {
             case 38:
                 if (sentences.length === 0) break
-                screen.removeChild(sentences[sentences.length - 1])
+                output.removeChild(sentences[sentences.length - 1])
                 trash_bin.push(sentences.pop())
                 break
             case 40:
                 if (trash_bin.length === 0) break
                 sentences.push(trash_bin.pop())
-                screen.insertBefore(sentences[sentences.length - 1], screen.lastElementChild)
+                output.appendChild(sentences[sentences.length - 1])
+                // screen.insertBefore(sentences[sentences.length - 1], screen.lastElementChild)
                 break
             default:
                 break

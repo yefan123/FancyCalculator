@@ -27,7 +27,7 @@ app.on('ready', () => {
     let win = new BrowserWindow({
         width: 420,
         height: 500,
-        fullscreen: false,
+        // fullscreen: false,
         resizable: true
     });
     // win.webContents.openDevTools();
