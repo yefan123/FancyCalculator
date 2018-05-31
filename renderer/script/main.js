@@ -16,13 +16,6 @@
     global['trash_bin'] = [];
     global['input_sentence'] = document.querySelector('#input div')
 
-
-
-    // let sentence = document.createElement('div')
-    // screen.appendChild(sentence)
-    // cursor.innerHTML = '>'
-    // cursor.style.cssFloat = 'left'
-    // screen.querySelector('div:last-child').appendChild(cursor);
 })()
 
 // 常规的符号后缀

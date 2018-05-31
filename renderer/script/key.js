@@ -64,6 +64,7 @@ document.addEventListener('keydown', ({
 
 })
 
+// 将trash_bin中第一个sentence的结果显示在input_sentence
 function trashShowFirst() {
     global['fontSize'] = 19
     global['script'] = []
