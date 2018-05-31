@@ -19,7 +19,7 @@ const template = [{},
                 checked: true, //选中
                 click: () => {
                     const win = BrowserWindow.fromId(1); //browserwindow不唯一
-                    win.setSize(420, 500);
+                    win.setSize(70 * 4 * 1.5, 500);
                     win.webContents.send('changeTo', 'basic'); //ipcMain没有send方法???
                 },
                 accelerator: 'CommandOrControl+B' // 快捷键
@@ -30,7 +30,7 @@ const template = [{},
                 checked: false,
                 click: () => {
                     const win = BrowserWindow.fromId(1);
-                    win.setSize(560, 500);
+                    win.setSize(70 * 8, 500);
                     win.webContents.send('changeTo', 'advanced');
                 },
                 accelerator: 'CommandOrControl+A'
@@ -67,8 +67,8 @@ const template = [{},
                 click: () => {
                     const win = BrowserWindow.fromId(1);
                     win.webContents.send('changeTo', 'advanced');
-                    win.toggleDevTools()
                     win.setFullScreen(true)
+                    win.toggleDevTools()
                 }
             }
         ]

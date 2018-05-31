@@ -4,7 +4,8 @@ const {
     sentences,
     screen,
     trash_bin,
-    output
+    output,
+    input_sentence
 } = global
 
 // 模拟按键后闪烁
@@ -48,15 +49,31 @@ document.addEventListener('keydown', ({
                 if (sentences.length === 0) break
                 output.removeChild(sentences[sentences.length - 1])
                 trash_bin.push(sentences.pop())
+                trashShowFirst()
                 break
             case 40:
                 if (trash_bin.length === 0) break
                 sentences.push(trash_bin.pop())
                 output.appendChild(sentences[sentences.length - 1])
                 // screen.insertBefore(sentences[sentences.length - 1], screen.lastElementChild)
+                trashShowFirst()
                 break
             default:
                 break
         }
 
 })
+
+function trashShowFirst() {
+    global['fontSize'] = 19
+    global['script'] = []
+    input_sentence.innerHTML = ''
+    if (trash_bin.length > 0) {
+        const resultText = trash_bin[trash_bin.length - 1].lastChild.childNodes[0].nodeValue
+        const span = document.createElement('span')
+        span.innerHTML = resultText
+        span.style.fontSize = `${fontSize}px`
+        script.push(resultText)
+        input_sentence.appendChild(span)
+    }
+}
