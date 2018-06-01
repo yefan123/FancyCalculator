@@ -1,3 +1,8 @@
+//  注意:
+// GitHub Desktop内置了本地repository路径和项目的映射关系
+// 本地文件夹名称可以修改, 但要重新locate
+
+
 // 规范
 const {
     keyboard,
@@ -37,7 +42,7 @@ document.addEventListener('keydown', ({
     keyCode
 }) => {
     // console.log(keyCode)
-    // 小键盘的数字键
+    // 小键盘的数字键(0~9)
     if (keyCode >= 48 && keyCode <= 57) {
         clickKey(keyCode - 48)
     } else if (key_codes.indexOf(keyCode) !== -1) {

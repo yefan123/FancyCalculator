@@ -1,6 +1,6 @@
 {
   "name": "FancyCalculator",
-  "version": "3.7.5",
+  "version": "3.7.6",
   "description": "基于 Electron + javascript 实现的桌面计算器应用",
   "main": "main.js",
   "scripts": {
